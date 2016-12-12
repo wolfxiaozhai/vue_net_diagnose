@@ -49,15 +49,14 @@
           url: "http://127.0.0.1:7000/api/get_diagnose_data_by_id/",
           dataType: "json",
           success: (data) => {
-            console.log(data.data);
             this.form = data.data
           }
         })
+      },
+      saveRecord () {
+        alert("save");
       }
     },
-    saveRecord () {
-      alert("save");
-    }
 
   }
 </script>
