@@ -37,7 +37,9 @@
       <el-table-column prop="diagnose_date" label="诊断时间"></el-table-column>
       <el-table-column :context="_self" inline-template label="操作">
         <div>
-            <el-button size="small" @click="handleEdit($index, row)">编辑</el-button>
+            <el-button size="small">
+              <router-link :to="{ name: 'edit', params: { row_index: $index }}">编辑</router-link>
+            </el-button>
             <el-button size="small" type="danger" @click="handleDelete($index, row)">删除</el-button>
         </div>
       </el-table-column>
@@ -54,6 +56,7 @@
       return {
         tableData: [],
         form: {
+          id: 0,
           account: '',
           srv_name: '',
           status: '',
@@ -66,6 +69,9 @@
         this.getOriginData()
     },
     methods: {
+      notify: function() {
+        this.$broadcast('parent-index', this.index)
+      },
       getOriginData () {
         $.ajax({
           type: 'get',
@@ -77,7 +83,8 @@
         })
       },
       handleEdit (index, row) {
-        alert("edit this line");
+        alert(index);
+        alert(row.id);
       },
       handleDelete (index, row) {
         alert("delete this line");
@@ -95,6 +102,7 @@
           diagnose_ts =  diagnose_date.getTime()
         };
         let params = {
+          'record_id': '',
           'account': formData.account,
           'srv_name': formData.srv_name,
           'status': formData.status,
