@@ -4,6 +4,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import { Button, Select, Menu, Table, Form } from 'element-ui'
 import App from './App.vue'
+import '../src/stylesheet/index.scss';
 import routes from './router-config'
 
 Vue.use(VueRouter)

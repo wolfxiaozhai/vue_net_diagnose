@@ -1,0 +1,53 @@
+//fonts
+$iconfont: "iconfont" !important;
+%font-604 {
+    font-family: $iconfont;
+    content: '\e604';
+    color: $brand-primary;
+    display: none\9;
+}
+.ngui-radio {
+    display: none;
+    display: inline-block\9;
+    &.disabled, &[disabled] {
+        + label {
+            cursor: not-allowed;
+            &:before {
+                content: '\e605';
+                display: none\9;
+                font-family: $iconfont;
+                color: $ngui-gray-darker-color;
+            }
+        }
+        &:checked + label {
+            cursor: not-allowed;
+            &:before {
+                content: '\e604';
+                display: none\9;
+                font-family: $iconfont;
+                color: $ngui-gray-darker-color;
+            }
+        }
+        &.active {
+            cursor: not-allowed;
+            + label:before {
+                content: '\e604';
+                display: none\9;
+                font-family: $iconfont;
+                color: $ngui-gray-darker-color;
+            }
+        }
+    }
+    + label:before {
+        font-family: $iconfont;
+        content: "\e605";
+        display: none\9;
+        color: $brand-primary;
+    }
+    &:checked + label:before {
+        @extend %font-604;
+    }
+    &.active + label:before {
+        @extend %font-604;
+    }
+}

@@ -1,0 +1,17 @@
+// Labels
+@mixin label-variant($color) {
+    border: 1px solid $color;
+    color: $color;
+    background-color: #fff;
+    &:focus {
+        border: 1px solid darken($color, 5%);
+        color: $color;
+    }
+    &:active,
+    &:hover,
+    &.active {
+        border: 1px solid darken($color, 5%);
+        background-color: darken($color, 5%);
+        color: #fff;
+    }
+}

@@ -1,0 +1,77 @@
+//colors
+$color_mountain_mist_approx: #999999;
+$color_anakiwa_approx: #9cd0ff;
+$color_neon_carrot_approx: #ff9d3c;
+$color_mantis_approx: #62ca66;
+$color_orange_approx: #f76120;
+
+//fonts
+$font_0: "iconfont" !important;
+
+.ngui-tips {
+	vertical-align: sub;
+	span {
+		color: $color_mountain_mist_approx;
+	}
+	.ngui-tips-icon:before {
+		font-family: $font_0;
+		content: "\e609";
+		color: $color_anakiwa_approx;
+		font-style: normal;
+	}
+}
+.ngui-info {
+	vertical-align: sub;
+	span {
+		color: $color_mountain_mist_approx;
+	}
+	.ngui-info-icon:before {
+		font-family: $font_0;
+		content: "\e613";
+		color: $color_neon_carrot_approx;
+		font-style: normal;
+	}
+}
+.ngui-success {
+	vertical-align: sub;
+	span {
+		color: $color_mountain_mist_approx;
+	}
+	.ngui-success-icon:before {
+		font-family: $font_0;
+		content: "\e60e";
+		color: $color_mantis_approx;
+		font-style: normal;
+	}
+}
+.ngui-warning {
+	vertical-align: sub;
+	span {
+		color: $color_mountain_mist_approx;
+	}
+	.ngui-warning-icon:before {
+		font-family: $font_0;
+		content: "\e612";
+		color: $color_orange_approx;
+		font-style: normal;
+	}
+}
+.ngui-under-warning {
+	margin: 2px;
+	color: $color_orange_approx;
+}
+.ngui-under-warning-sm {
+	font-size: 12px;
+}
+.ngui-tips-sm span {
+	font-size: 12px;
+}
+.ngui-info-sm span {
+	font-size: 12px;
+}
+.ngui-success-sm span {
+	font-size: 12px;
+}
+.ngui-warning-sm span {
+	font-size: 12px;
+}

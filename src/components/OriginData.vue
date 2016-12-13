@@ -28,14 +28,14 @@
       </el-row>
     </el-form>
     <el-table :data="tableData" stripe border style="width: 100%">
-      <el-table-column prop="account" label="商家帐号" width="180"></el-table-column>
-      <el-table-column prop="srv_name" label="业务名称" width="180"></el-table-column>
-      <el-table-column prop="status" label="状态" width="180"></el-table-column>
-      <el-table-column prop="reason_type" label="原因类型" width="180"></el-table-column>
-      <el-table-column prop="op_name" label="操作人" width="180"></el-table-column>
-      <el-table-column prop="create_date" label="创建时间"></el-table-column>
-      <el-table-column prop="diagnose_date" label="诊断时间"></el-table-column>
-      <el-table-column :context="_self" inline-template label="操作">
+      <el-table-column prop="account" label="商家帐号" ></el-table-column>
+      <el-table-column prop="srv_name" label="业务名称" ></el-table-column>
+      <el-table-column prop="status" label="状态" ></el-table-column>
+      <el-table-column prop="reason_type" label="原因类型" ></el-table-column>
+      <el-table-column prop="op_name" label="操作人" ></el-table-column>
+      <el-table-column prop="create_date" label="创建时间" ></el-table-column>
+      <el-table-column prop="diagnose_date" label="诊断时间" ></el-table-column>
+      <el-table-column :context="_self" inline-template label="操作" min-width="100">
         <div>
             <el-button size="small">
               <router-link :to="{ name: 'edit', params: { row_index: $index }}">编辑</router-link>

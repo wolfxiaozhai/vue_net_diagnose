@@ -1,0 +1,81 @@
+$sanjiaoWidth : 15px;  //边缘三角的宽
+$sanjiaoHeight : 20px;  //边缘三角的高
+.ngui-progressbar {
+  list-style: none;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.ngui-progressbar li {
+  float: left;
+}
+
+.ngui-progressbar li a {
+  color: #666666;
+  display: block;
+  text-decoration: none;
+  position: relative;
+  height: $sanjiaoHeight * 2;  //**42
+  line-height: $sanjiaoHeight * 2;  //**42
+  padding: 0 10px 0 5px;
+  text-align: center;
+  margin-right: $sanjiaoWidth * 2 + 3px;  //**33
+  background-color: #fafafa;
+  //min-width:200px;
+}
+
+.ngui-progressbar li a:after, .ngui-progressbar li a:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  border: solid #fafafa;
+  border-width: $sanjiaoHeight $sanjiaoWidth;  //**21 15
+  width: 0;
+  height: 0;
+}
+
+.ngui-progressbar li a:before {
+  left: -$sanjiaoWidth * 2;  //**30
+  border-left-color: transparent;
+}
+
+.ngui-progressbar li a:after {
+  left: 100%;
+  border-color: transparent;
+  border-left-color: #fafafa;
+}
+
+.ngui-progressbar li.current a {
+  background-color: #3dc6b6;
+  color: #ffffff;
+}
+
+.ngui-progressbar li.current a:before {
+  border-color: #3dc6b6 #3dc6b6 #3dc6b6 transparent;
+}
+
+.ngui-progressbar li.current a:after {
+  border-left-color: #3dc6b6;
+}
+
+.ngui-progressbar li:first-child a {
+  padding-left: 15px;
+  -moz-border-radius: 4px 0 0 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px 0 0 4px
+}
+
+.ngui-progressbar li:first-child a:before {
+  border: none;
+}
+
+.ngui-progressbar li:last-child a {
+  padding-right: 15px;
+  -moz-border-radius: 0 4px 4px 0;
+  -webkit-border-radius: 0;
+  border-radius: 0 4px 4px 0
+}
+
+.ngui-progressbar li:last-child a:after {
+  border: none;
+}

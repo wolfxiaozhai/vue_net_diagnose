@@ -1,0 +1,44 @@
+h1 {
+    font-size: 24px;
+    line-height: 36px;
+}
+h2 {
+    font-size: 18px;
+    line-height: 27px;
+}
+h3 {
+    font-size: 14px;
+    line-height: 21px;
+}
+h4 {
+    font-size: 12px;
+    line-height: 18px;
+}
+.super-title {
+    font-size: 24px;
+    line-height: 34px;
+    padding: 15px 0;
+    border-bottom: 1px dotted $table-border-color;
+    .sub-title {
+        float: right;
+        font-size: 14px;
+    }
+}
+.ngui-font-important-color {
+    color: $ngui-font-important-color;
+}
+.ngui-font-normal-color {
+    color: $ngui-font-normal-color;
+}
+.ngui-font-normal-backup-color {
+    color: $ngui-font-normal-backup-color;
+}
+.ngui-font-tip-color {
+    color: $ngui-font-tip-color;
+}
+.ngui-font-link-color {
+    color: $ngui-font-link-color;
+}
+.ngui-font-attention-color {
+    color: $ngui-font-attention-color;
+}
