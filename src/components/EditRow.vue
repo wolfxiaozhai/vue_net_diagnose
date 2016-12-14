@@ -1,25 +1,86 @@
 <template>
-  <el-form ref="form" :model="form" label-width="80px" style="margin-top: 15px; margin-bottom: 15px;">
-      <el-row :gutter="20" style="margin-bottom:5px;margin-top:5px;">
-        <el-col :span="6">
-          <el-input v-model="form.account" placeholder="商家名称"></el-input>
-        </el-col>
-        <el-col :span="6">
-          <el-input v-model="form.srv_name" placeholder="业务名称"></el-input>
-        </el-col>
-        <el-col :span="4">
-          <el-select v-model="form.status" clearable placeholder="请选择诊断状态">
-            <el-option label="未诊断" value="未诊断"></el-option>
-            <el-option label="已诊断" value="已诊断"></el-option>
-          </el-select>
-        </el-col>
-      </el-row>
-      <el-row :gutter="20" style="margin-bottom:5px;margin-top:5px;">
-        <el-col :span="6">
-          <el-button type="primary" @click="saveRecord()">保存</el-button>
-        </el-col>
-      </el-row>
-    </el-form>
+  <div>
+    <div style="display:block;padding-top:20px;">
+      <el-form ref="form" :model="form" label-width="80px" style="margin-top: 15px; margin-bottom: 15px;">
+        <el-row :gutter="20" style="margin-bottom:5px;margin-top:5px;">
+          <el-col :span="6">
+            <el-select v-model="form.status" clearable placeholder="请选择处理状态">
+              <el-option label="未解决" value="0"></el-option>
+              <el-option label="处理中" value="1"></el-option>
+              <el-option label="已解决" value="2"></el-option>
+            </el-select>
+          </el-col>
+          <el-col :span="6">
+            <el-select v-model="form.reason_type" clearable placeholder="请选择原因类型">
+              <el-option label="未知" value="0"></el-option>
+              <el-option label="域名劫持" value="1"></el-option>
+              <el-option label="网络不通" value="2"></el-option>
+              <el-option label="CDN问题" value="3"></el-option>
+            </el-select>
+          </el-col>
+          <el-col :span="6">
+            <el-input v-model="form.reason_detail" placeholder="原因详情"></el-input>
+          </el-col>
+          <el-col :span="6">
+            <el-button type="primary" @click="saveResult">保存</el-button>
+          </el-col>
+        </el-row>
+        <!--<el-row :gutter="20" style="margin-bottom:5px;margin-top:5px;">
+          <el-col :span="6">
+            <el-button type="primary" @click="saveResult">保存</el-button>
+          </el-col>
+        </el-row>-->
+      </el-form>
+    </div>
+    <h2>商家{{ diagnose_data.username }}的DNS检测信息</h2>
+    <table class="data-table">
+      <tbody>
+        <tr>
+          <th width="200">您的检测时间为</th>
+          <td>
+              {{diagnose_data.create_date}}
+          </td>
+        </tr>
+        <tr>
+            <th>您的 LocalIP</th>
+            <td>{{diagnose_data.localip}}</td>
+        </tr>
+        <tr>
+            <th>您的Local DNS IP为</th>
+            <td>
+                {{diagnose_data.localdns}}
+            </td>
+        </tr>
+        <tr>
+            <th>您的Domain为</th>
+            <td>
+                {{diagnose_data.domain}}
+            </td>
+        </tr>
+        <tr>
+            <th>您的操作系统为</th>
+            <td>
+                {{diagnose_data.os}}
+            </td>
+        </tr>
+        <tr>
+            <th>您的浏览器为</th>
+            <td>
+                {{diagnose_data.browser}}
+            </td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>以下是美团·点评域名的测试结果</h2>
+    <table class="data-table" v-if="diagnose_data.network_list">
+        <tbody>
+        <tr v-for="item in diagnose_data.network_list">
+            <th width="30%">{{item.url}}</th>
+            <td>{{item.val}}ms</td>
+        </tr>
+        </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -28,35 +89,70 @@
     data () {
       return {
         form: {
-          id: '',
-          account: '',
-          srv_name: '',
           status: '',
+          reason_type: '',
+          reason_detail: '',
+        },
+        diagnose_data: {
+          localIP: '',
+          localDNS: '',
+          domain: '',
+          username: '',
           create_date: '',
-          diagnose_date: '',
-        }
+          os: '',
+          browser: '',
+          network: {}
+        },
       }
     },
     mounted () {
-      this.fetchRecord()
+      this.fetchDetectData()
     },
     methods: {
-      fetchRecord () {
+      fetchDetectData () {
         let record_id = this.$route.params.row_index;
+        console.log(record_id)
         $.ajax({
           type: "post",
           data: {'record_id': record_id},
-          url: "http://127.0.0.1:7000/api/get_diagnose_data_by_id/",
+          url: "http://127.0.0.1:7000/dns/api/get_dns_detect_data_by_id/",
           dataType: "json",
           success: (data) => {
-            this.form = data.data
+            this.form = data.detect_result_data;
+            this.diagnose_data = data.dns_detect_data
           }
         })
       },
-      saveRecord () {
-        alert("save");
+      saveResult () {
+        let formData = this.form;
+        let params = {
+          'dns_detect_id': this.$route.params.row_index,
+          'service': '团购',
+          'status': formData.status,
+          'reason_type': formData.reason_type,
+          'reason_detail': formData.reason_detail,
+          'op': 'zhaoyoushuai',
+        };
+        $.ajax({
+          type: "post",
+          data: params,
+          url: "http://127.0.0.1:7000/dns/api/save_dns_result/",
+          dataType: "json",
+          success: (data) => {
+            if (data.ok) {
+              alert("Save success");
+            }else{
+              alert("Save failed");
+            }
+          }
+        })
       }
     },
 
   }
 </script>
+<style>
+h2 {
+  font-size: 16px;
+  display:block;
+}

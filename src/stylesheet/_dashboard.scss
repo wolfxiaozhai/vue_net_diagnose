@@ -101,3 +101,19 @@ $sidebar-width: 240px;
         }
     }
 }
+
+.data-table{
+    width: 100%;
+    border-collapse:collapse;
+    border:none;
+    tr {
+        border: 1px solid #eee;
+    }
+    td {
+        &:first-child {
+            font-weight: 700;
+        }
+        padding: 10px;
+        border: 1px solid #eee;
+    }
+}
