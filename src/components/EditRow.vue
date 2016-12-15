@@ -19,7 +19,7 @@
             </el-select>
           </el-col>
           <el-col :span="6">
-            <el-input v-model="form.reason_detail" placeholder="原因详情"></el-input>
+            <el-input type="textarea" v-model="form.reason_detail" placeholder="原因详情"></el-input>
           </el-col>
           <el-col :span="6">
             <el-button type="primary" @click="saveResult">保存</el-button>
@@ -72,11 +72,22 @@
       </tbody>
     </table>
     <h2>以下是美团·点评域名的测试结果</h2>
-    <table class="data-table" v-if="diagnose_data.network_list">
+    <table class="data-table" v-if="diagnose_data.in_network_list">
         <tbody>
-        <tr v-for="item in diagnose_data.network_list">
-            <th width="30%">{{item.url}}</th>
-            <td>{{item.val}}ms</td>
+        <tr v-for="item in diagnose_data.in_network_list">
+            <th width="10%">{{item.name}}</th>
+            <td width="30%">{{item.url}}</td>
+            <td>网络正常,延迟<span class="result">{{item.val}}</span>毫秒</td>
+        </tr>
+        </tbody>
+    </table>
+    <h2>以下是其他域名的测试结果</h2>
+    <table class="data-table" v-if="diagnose_data.out_network_list">
+        <tbody>
+        <tr v-for="item in diagnose_data.out_network_list">
+            <th width="10%">{{item.name}}</th>
+            <td width="30%">{{item.url}}</td>
+            <td>网络正常,延迟<span class="result">{{item.val}}</span>毫秒</td>
         </tr>
         </tbody>
     </table>
@@ -101,7 +112,8 @@
           create_date: '',
           os: '',
           browser: '',
-          network: {}
+          in_network_list: [],
+          out_network_list: []
         },
       }
     },
@@ -156,3 +168,15 @@ h2 {
   font-size: 16px;
   display:block;
 }
+.result {
+  color: #3dc6b6;
+  font-weight: 400;
+}
+table th {
+    padding: 10px;
+    border: 1px solid #eaeaea;
+    text-align: left;
+    font-weight: 400;
+    background-color: #fafafa;
+}
+</style>

@@ -1,12 +1,21 @@
 <template>
   <div id="app" :class="{'layout-collapsed': collapsed}">
     <header class="layout-header">
-      <ul class="ngui2-nav">
+      <!--<ul class="ngui2-nav">
           <li><a href="#"><i class="icon iconfont"></i> 链接</a></li>
           <li><a href="#">链接</a></li>
           <li><a href="#">链接</a></li>
-          <li><a href="#">链接</a></li>
-      </ul>
+      </ul>-->
+      <div class="login">
+        <el-dropdown>
+          <span class="el-dropdown-link">
+            你好，{{ user_name }}<i class="el-icon-caret-bottom el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>登出</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </div>
       <div class="menu-bar">
           <a href="#" @click="zysToggleMenu()"><i class="icon iconfont">&#xe622;</i></a>
       </div>
@@ -39,11 +48,17 @@
 
 <script>
 
+  import store from './store/store.js'
   import OriginData from "./components/OriginData.vue";
   export default {
     data () {
       return {
         collapsed: false
+      }
+    },
+    computed: {
+      user_name: function() {
+        return store.state.user_name
       }
     },
     methods: {
@@ -56,3 +71,11 @@
     },
   }
 </script>
+<style>
+.login {
+  display: block;
+  padding-top: 20px;
+  float: right;
+  margin: 0;
+}
+</style>
