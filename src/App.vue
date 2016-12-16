@@ -12,7 +12,7 @@
             你好，{{ user_name }}<i class="el-icon-caret-bottom el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>登出</el-dropdown-item>
+            <el-dropdown-item><a @click="logout">登出</a></el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -57,6 +57,7 @@
       return {
         user_name: '',
         collapsed: false,
+        redirect_url: ''
       }
     },
     mounted () {
@@ -66,25 +67,46 @@
       zysToggleMenu () {
         this.collapsed = !this.collapsed;
       },
+
+      logout () {
+        //后端接口清除登录状态
+        this.delProfile()
+        //window.location.href = this.redirect_url;
+      },
+
       getProfile () {
         $.ajax({
           url: 'http://127.0.0.1:7000/dns/api/get_login_info/',
           type: 'GET',
           dataType: 'json',
           success: (data) => {
-            //console.log(data);
+            console.log(data);
             if (data.username != '') {
               this.$store.dispatch('setUserName', data.username)
               this.user_name = this.$store.getters.getUserName;
+              this.redirect_url = data.redirect_url;
             }else{
               window.location.href = data.redirect_url;
             }
           }
         })
       },
-      loadProfile() {
-        this.user_name = this.$store.getters.getUserName;
+
+      delProfile () {
+        let params = {
+          'username': this.$store.getters.getUserName
+        }
+        $.ajax({
+          url: 'http://127.0.0.1:7000/dns/api/del_login_info/',
+          type: 'post',
+          data: params,
+          dataType: 'json',
+          success: (data) => {
+            window.location.href = this.redirect_url;
+          }
+        })
       }
+
     },
   }
 </script>
