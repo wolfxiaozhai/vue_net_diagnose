@@ -42,7 +42,16 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true
+    noInfo: true,
+    hot: true,
+    inline: true,
+    port: 8080,
+    host: '0.0.0.0',
+    proxy: {
+      '/dns/api/*': {
+        target: "http://localhost:7000"
+      }
+    }
   },
   devtool: '#eval-source-map'
 }

@@ -125,7 +125,7 @@
         $.ajax({
           type: 'post',
           data: params,
-          url: "http://127.0.0.1:7000/dns/api/get_dns_detect_data/",
+          url: "/dns/api/get_dns_detect_data/",
           dataType: "json",
           success: (data) => {
             this.total = data.total;

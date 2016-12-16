@@ -76,7 +76,7 @@
 
       getProfile () {
         $.ajax({
-          url: 'http://127.0.0.1:7000/dns/api/get_login_info/',
+          url: '/dns/api/get_login_info/',
           type: 'GET',
           dataType: 'json',
           success: (data) => {
@@ -97,7 +97,7 @@
           'username': this.$store.getters.getUserName
         }
         $.ajax({
-          url: 'http://127.0.0.1:7000/dns/api/del_login_info/',
+          url: '/dns/api/del_login_info/',
           type: 'post',
           data: params,
           dataType: 'json',

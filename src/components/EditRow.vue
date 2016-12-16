@@ -127,7 +127,7 @@
         $.ajax({
           type: "post",
           data: {'record_id': record_id},
-          url: "http://127.0.0.1:7000/dns/api/get_dns_detect_data_by_id/",
+          url: "/dns/api/get_dns_detect_data_by_id/",
           dataType: "json",
           success: (data) => {
             this.form = data.detect_result_data;
@@ -149,7 +149,7 @@
         $.ajax({
           type: "post",
           data: params,
-          url: "http://127.0.0.1:7000/dns/api/save_dns_result/",
+          url: "/dns/api/save_dns_result/",
           dataType: "json",
           success: (data) => {
             if (data.ok) {
