@@ -47,27 +47,44 @@
 </template>
 
 <script>
-
-  import store from './store/store.js'
+  import $ from 'jquery';
   import OriginData from "./components/OriginData.vue";
   export default {
+    components: {
+      OriginData: OriginData,
+    },
     data () {
       return {
-        collapsed: false
+        user_name: '',
+        collapsed: false,
       }
     },
-    computed: {
-      user_name: function() {
-        return store.state.user_name
-      }
+    mounted () {
+      this.getProfile()
     },
     methods: {
       zysToggleMenu () {
         this.collapsed = !this.collapsed;
       },
-    },
-    components: {
-      OriginData: OriginData,
+      getProfile () {
+        $.ajax({
+          url: 'http://127.0.0.1:7000/dns/api/get_login_info/',
+          type: 'GET',
+          dataType: 'json',
+          success: (data) => {
+            //console.log(data);
+            if (data.username != '') {
+              this.$store.dispatch('setUserName', data.username)
+              this.user_name = this.$store.getters.getUserName;
+            }else{
+              window.location.href = data.redirect_url;
+            }
+          }
+        })
+      },
+      loadProfile() {
+        this.user_name = this.$store.getters.getUserName;
+      }
     },
   }
 </script>

@@ -6,6 +6,7 @@ import { Button, Select, Menu, Table, Form } from 'element-ui'
 import App from './App.vue'
 import '../src/stylesheet/index.scss';
 import routes from './router-config'
+import store from './vuex/store'
 
 Vue.use(VueRouter)
 Vue.use(ElementUI)
@@ -19,5 +20,6 @@ const router = new VueRouter({
 const app = new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')

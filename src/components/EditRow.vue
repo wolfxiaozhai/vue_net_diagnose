@@ -143,8 +143,9 @@
           'status': formData.status,
           'reason_type': formData.reason_type,
           'reason_detail': formData.reason_detail,
-          'op': 'zhaoyoushuai',
+          'op': this.$store.getters.getUserName,
         };
+        console.log(params);
         $.ajax({
           type: "post",
           data: params,

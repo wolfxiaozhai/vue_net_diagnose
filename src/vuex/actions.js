@@ -5,4 +5,18 @@
 //  dispatch('DECREMENT', 1)
 // }
 // es6风格的函数
-export const decrementCounter = ({dispatch, state}) => dispatch('DECREMENT', 10)
+//export const decrementCounter = ({dispatch, state}) => dispatch('DECREMENT', 10)
+
+import $ from 'jquery'
+
+export const loadProfile = ({ dispatch }) => {
+  // load login_info from numen
+  $.ajax({
+    url: 'http://127.0.0.1:7000/dns/api/get_login_info/',
+    type: 'GET',
+    dataType: 'json',
+    success: (profile) => {
+      dispatch('UPDATE_PROFILE', profile)
+    }
+  })
+}
