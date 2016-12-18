@@ -45,7 +45,7 @@ module.exports = {
     noInfo: true,
     hot: true,
     inline: true,
-    port: 8080,
+    port: 8081,
     host: '0.0.0.0',
     proxy: {
       '/dns/api/*': {

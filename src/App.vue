@@ -70,8 +70,7 @@
 
       logout () {
         //后端接口清除登录状态
-        this.delProfile()
-        //window.location.href = this.redirect_url;
+        this.logout()
       },
 
       getProfile () {
@@ -92,19 +91,8 @@
         })
       },
 
-      delProfile () {
-        let params = {
-          'username': this.$store.getters.getUserName
-        }
-        $.ajax({
-          url: '/dns/api/del_login_info/',
-          type: 'post',
-          data: params,
-          dataType: 'json',
-          success: (data) => {
-            window.location.href = this.redirect_url;
-          }
-        })
+      logout () {
+        window.location.href = this.redirect_url;
       }
 
     },
