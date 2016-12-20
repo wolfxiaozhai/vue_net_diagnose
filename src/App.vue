@@ -60,7 +60,7 @@
         redirect_url: ''
       }
     },
-    mounted () {
+    created () {
       this.getProfile()
     },
     methods: {

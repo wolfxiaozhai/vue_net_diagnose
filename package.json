@@ -1,7 +1,7 @@
 {
-  "name": "element-starter",
-  "description": "A Vue.js project",
-  "author": "yi.shyang@ele.me",
+  "name": "net_diagnose",
+  "description": "A pure fe project use vue2.x",
+  "author": "wolfxiaozhai",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
