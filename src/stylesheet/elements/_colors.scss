@@ -1,111 +1,111 @@
 @charset "UTF-8";
-.ngui-primary-color {
-    color: $ngui-primary-color;
+.primary-color {
+    color: $primary-color;
 }
 .ngui-primary-bg-color {
-    background-color: $ngui-primary-color;
+    background-color: $primary-color;
     filter:none;
 }
 .ngui-primary-border-color {
-    border-color: $ngui-primary-color;
+    border-color: $primary-color;
 }
-.ngui-primary-active-color {
-    color: $ngui-primary-active-color;
+.primary-active-color {
+    color: $primary-active-color;
 }
 .ngui-primary-active-bg-color {
-    background-color: $ngui-primary-active-color;
+    background-color: $primary-active-color;
     filter:none;
 }
 .ngui-primary-active-border-color {
-    border-color: $ngui-primary-active-color;
+    border-color: $primary-active-color;
 }
-.ngui-info-color {
-    color: $ngui-info-color;
+.warning-color {
+    color: $warning-color;
 }
 .ngui-info-bg-color {
-    background-color: $ngui-info-color;
+    background-color: $warning-color;
     filter:none;
 }
 .ngui-info-border-color {
-    border-color: $ngui-info-color;
+    border-color: $warning-color;
 }
-.ngui-info-active-color {
-    color: $ngui-info-active-color;
+.ngui-warning-active-color {
+    color: $warning-active-color;
 }
 .ngui-info-active-bg-color {
-    background-color: $ngui-info-active-color;
+    background-color: $warning-active-color;
     filter:none;
 }
 .ngui-info-active-border-color {
-    border-color: $ngui-info-active-color;
+    border-color: $warning-active-color;
 }
-.ngui-warning-color {
-    color: $ngui-warning-color;
+.ngui-danger-color {
+    color: $danger-color;
 }
 .ngui-warning-bg-color {
-    background-color: $ngui-warning-color;
+    background-color: $danger-color;
     filter:none;
 }
 .ngui-warning-border-color {
-    border-color: $ngui-warning-color;
+    border-color: $danger-color;
 }
 .ngui-gray-color {
-    color: $ngui-gray-color;
+    color: $gray-light-color;
 }
 .ngui-gray-bg-color {
-    background-color: $ngui-gray-color;
+    background-color: $gray-light-color;
     filter:none;
 }
 .ngui-gray-border-color {
-    border-color: $ngui-gray-color;
+    border-color: $gray-light-color;
 }
 .ngui-gray-lite-color {
-    color: $ngui-gray-lite-color;
+    color: $white-dark-color;
 }
 .ngui-gray-lite-bg-color {
-    background-color: $ngui-gray-lite-color;
+    background-color: $white-dark-color;
     filter:none;
 }
 .ngui-gray-lite-border-color {
-    border-color: $ngui-gray-lite-color;
+    border-color: $white-dark-color;
 }
 .ngui-gray-darker-color {
-    color: $ngui-gray-darker-color;
+    color: $silver-lighter-color;
 }
 .ngui-gray-darker-bg-color {
-    background-color: $ngui-gray-darker-color;
+    background-color: $silver-lighter-color;
     filter:none;
 }
 .ngui-gray-darker-border-color {
-    border-color: $ngui-gray-darker-color;
+    border-color: $silver-lighter-color;
 }
-.ngui-font-important-color {
-    color: $ngui-font-important-color;
+.font-normal-color {
+    color: $font-default-color;
 }
 .ngui-font-important-bg-color {
-    background-color:$ngui-font-important-color;
+    background-color:$font-default-color;
     filter:none;
 }
 .ngui-font-important-border-color {
-    border-color: $ngui-font-important-color;
+    border-color: $font-default-color;
 }
-.ngui-font-normal-color {
-    color: $ngui-font-normal-color;
+.font-normal-light-color {
+    color: $font-default-light-color;
 }
 .ngui-font-normal-bg-color {
-    background-color: $ngui-font-normal-color;
+    background-color: $font-default-light-color;
     filter:none;
 }
 .ngui-font-normal-border-color {
-    border-color: $ngui-font-normal-color;
+    border-color: $font-default-light-color;
 }
-.ngui-font-normal-backup-color {
-    color: $ngui-font-normal-backup-color;
+.font-normal-lighter-color {
+    color: $font-default-lighter-color;
 }
 .ngui-font-normal-backup-bg-color {
-    background-color: $ngui-font-normal-backup-color;
+    background-color: $font-default-lighter-color;
     filter:none;
 }
 .ngui-font-normal-backup-border-color {
-    border-color: $ngui-font-normal-backup-color;
+    border-color: $font-default-lighter-color;
 }

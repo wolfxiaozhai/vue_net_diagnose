@@ -1,12 +1,15 @@
 $bg-menu: #2f353f;
 $bg-box: white;
 $sidebar-width: 240px;
+$ngui-font-normal-color: #666;
+$ngui-font-normal-backup-color: #999;
 
 #app {
     background: $bg-menu !important;
 }
 .layout-header {
     z-index: 999;
+    height: 60px;
     position: absolute;
     left: $sidebar-width;
     right: 0;
@@ -40,6 +43,7 @@ $sidebar-width: 240px;
             line-height: 60px;
         }
         h2 {
+            font-size: 14px;
             display: none;
         }
     }
@@ -54,8 +58,8 @@ $sidebar-width: 240px;
 
 .layout-footer {
     position: relative;
-    background: $bg-box;
-    left: 240px;
+    background-color: $bg-box;
+    margin-left: 240px;
     padding: 15px 20px;
     text-align: center;
     border-top: 1px solid #ddd;

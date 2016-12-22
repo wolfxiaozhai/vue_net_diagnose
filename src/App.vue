@@ -1,11 +1,6 @@
 <template>
   <div id="app" :class="{'layout-collapsed': collapsed}">
     <header class="layout-header">
-      <!--<ul class="ngui2-nav">
-          <li><a href="#"><i class="icon iconfont"></i> 链接</a></li>
-          <li><a href="#">链接</a></li>
-          <li><a href="#">链接</a></li>
-      </ul>-->
       <div class="login">
         <el-dropdown>
           <span class="el-dropdown-link">
@@ -17,42 +12,37 @@
         </el-dropdown>
       </div>
       <div class="menu-bar">
-          <a href="#" @click="zysToggleMenu()"><i class="icon iconfont">&#xe622;</i></a>
+          <a href="#" @click="zysToggleMenu()"><i class="icon icon-bars"></i></a>
       </div>
     </header>
     <div class="container-fluid">
       <div class="layout-content">
         <div class="layout-sidebar">
-          <h1>网络诊断项目</h1>
-          <h2>网络</h2>
-          <section class="side-menu-section">
-            <el-menu default-active="1" mode="vertical" style="margi;background-color: #2f353f">
-              <el-menu-item index="1">
-                <router-link to="/">
-                  网络诊断
-                </router-link>
-              </el-menu-item>
-              <el-menu-item index="2">导航二</el-menu-item>
-              <el-menu-item index="3">导航三</el-menu-item>
-            </el-menu>
-          </section>
+          <div style="height:60px;">
+            <h1>Diagnose</h1>
+            <h2>Diagnose</h2>
+          </div>
+          <div>
+            <ngui2-menu :collapsed="collapsed" :unique-opened="false" :router="true">
+              <ngui2-submenu index="1">
+                  <template slot="title"><i class="icon icon-bars"></i> 网络诊断</template>
+                  <ngui2-menu-item index="/">诊断记录</ngui2-menu-item>
+              </ngui2-submenu>
+            </div>
         </div>
         <div class="layout-main">
           <router-view></router-view>
         </div>
       </div>
     </div>
-    <footer class="layout-footer">@MT-Falcon 2017</footer>
+    <footer class="layout-footer">&copy;2017 ZYS</footer>
   </div>
 </template>
 
 <script>
-  import $ from 'jquery';
-  import OriginData from "./components/OriginData.vue";
+  import $ from 'jquery'
   export default {
-    components: {
-      OriginData: OriginData,
-    },
+    name: 'app',
     data () {
       return {
         user_name: '',
@@ -60,42 +50,38 @@
         redirect_url: ''
       }
     },
-    created () {
+    mounted () {
       this.getProfile()
     },
     methods: {
       zysToggleMenu () {
-        this.collapsed = !this.collapsed;
+        this.collapsed = !this.collapsed
       },
-
       logout () {
-        //后端接口清除登录状态
-        this.logout()
+        // 后端接口清除登录状态
+        this.logOut()
       },
-
       getProfile () {
         $.ajax({
           url: '/dns/api/get_login_info/',
           type: 'GET',
           dataType: 'json',
           success: (data) => {
-            console.log(data);
-            if (data.username != '') {
+            console.log(data)
+            if (data.username !== '') {
               this.$store.dispatch('setUserName', data.username)
-              this.user_name = this.$store.getters.getUserName;
-              this.redirect_url = data.redirect_url;
-            }else{
-              window.location.href = data.redirect_url;
+              this.user_name = this.$store.getters.getUserName
+              this.redirect_url = data.redirect_url
+            } else {
+              window.location.href = data.redirect_url
             }
           }
         })
       },
-
-      logout () {
-        window.location.href = this.redirect_url;
+      logOut () {
+        window.location.href = '/dns/api/logout/'
       }
-
-    },
+    }
   }
 </script>
 <style>

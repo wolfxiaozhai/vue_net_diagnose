@@ -1,0 +1,39 @@
+.ngui2-breadcrumb {
+  font-size: $breadcrumb-font-size;
+  line-height: 1;
+  @include clearfix();
+
+  &__separator {
+    margin: 0 6px;
+    color: $breadcrumb-separator-color;
+  }
+  &__item {
+    float: left;
+
+    &__inner {
+      &, & a {
+        transition: color .15s linear;
+        color: $breadcrumb-link-color;
+
+        &:hover {
+          color: $breadcrumb-link-hover-color;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &:last-child {
+      .ngui2-breadcrumb__item__inner,
+      .ngui2-breadcrumb__item__inner a {
+        &, &:hover {
+          color: $breadcrumb-link-last-color;
+          cursor: text;
+        }
+      }
+
+      .ngui2-breadcrumb__separator {
+        display: none;
+      }
+    }
+  }
+}

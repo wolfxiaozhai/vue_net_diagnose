@@ -24,21 +24,19 @@ h4 {
         font-size: 14px;
     }
 }
-.ngui-font-important-color {
-    color: $ngui-font-important-color;
+.font-normal-color {
+    color: $font-default-color;
 }
-.ngui-font-normal-color {
-    color: $ngui-font-normal-color;
+.font-normal-light-color {
+    color: $font-default-light-color;
 }
-.ngui-font-normal-backup-color {
-    color: $ngui-font-normal-backup-color;
+.font-normal-lighter-color {
+    color: $font-default-lighter-color;
 }
-.ngui-font-tip-color {
-    color: $ngui-font-tip-color;
+
+.font-link-color {
+    color: $font-link-color;
 }
-.ngui-font-link-color {
-    color: $ngui-font-link-color;
-}
-.ngui-font-attention-color {
-    color: $ngui-font-attention-color;
+.font-danger-color {
+    color: $font-danger-color;
 }

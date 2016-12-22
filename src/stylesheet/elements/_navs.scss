@@ -9,10 +9,10 @@
     list-style: none;
     @include clearfix;
     .right-text {
-        line-height: $line-height-base;
         display: inline-block;
         padding: $nav-link-padding;
         float: right;
+        line-height: $line-height-base;
         font-size: 14px;
     }
     > li {
@@ -68,7 +68,7 @@
 // -------------------------
 // Give the tabs something to sit on
 .nav-tabs {
-    border-bottom: 2px solid $ngui-primary-color;
+    border-bottom: 2px solid $primary-color;
     > li {
         float: left;
         // Make the list-items overlay the bottom border
@@ -79,8 +79,8 @@
             line-height: $line-height-base;
             background-color: $nav-panels-bg-color;
             border: 1px solid $nav-panels-bg-color;
-            color: $ngui-font-normal-color;
-            border-bottom: 1px solid $ngui-primary-color;
+            color: $font-default-light-color;
+            border-bottom: 1px solid $primary-color;
             border-radius: $border-radius-base $border-radius-base 0 0;
             &:hover {
                 // border-color: $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color $nav-tabs-border-color;
@@ -92,8 +92,8 @@
             &:focus,
             &:hover {
                 color: #fff;
-                background-color: $ngui-primary-color;
-                border: 1px solid $ngui-primary-color;
+                background-color: $primary-color;
+                border: 1px solid $primary-color;
                 border-bottom-color: transparent;
                 cursor: default;
             }
@@ -108,7 +108,7 @@
 // Panels
 // -------------------------
 .nav-panels {
-    border-bottom: 1px solid $ngui-gray-color;
+    border-bottom: 1px solid $gray-light-color;
     > li {
         float: left;
         // Make the list-items overlay the bottom border
@@ -116,11 +116,12 @@
         // Actual tabs (as links)
         > a {
             // margin-right: 2px;
+            margin-right: -1px;
             line-height: $line-height-base;
             background-color: $nav-panels-bg-color;
-            border: 1px solid $ngui-gray-color;
-            color: $ngui-font-normal-color;
-            border-bottom: 1px solid $ngui-gray-color;
+            border: 1px solid $gray-light-color;
+            color: $font-default-light-color;
+            border-bottom: 1px solid $gray-light-color;
             margin-right: -1px;
             // border-radius: $border-radius-base $border-radius-base 0 0;
             &:hover {
@@ -133,14 +134,14 @@
             &,
             &:focus,
             &:hover {
-                line-height: $line-height-base - 0.25714142900000003;
-                color: $ngui-primary-color;
-                background-color: #fff;
-                border-top: 4px solid $ngui-primary-color;
-                border-bottom-color: transparent;
-                margin-bottom: -5px;
-                cursor: default;
                 padding-bottom: 11px;
+                margin-bottom: -5px;
+                line-height: $line-height-base - 0.25714142900000003;
+                color: $primary-color;
+                background-color: #fff;
+                border-top: 4px solid $primary-color;
+                border-bottom-color: transparent;
+                cursor: default;
             }
         }
     }
@@ -192,8 +193,8 @@
     > li {
         float: none;
         > a {
-            text-align: center;
             margin-bottom: 5px;
+            text-align: center;
         }
     }
     > .dropdown .dropdown-menu {

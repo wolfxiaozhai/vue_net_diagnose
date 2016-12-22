@@ -1,0 +1,100 @@
+.ngui2-alert {
+    width: 100%;
+    padding: $alert-padding;
+    margin: 0;
+    box-sizing: border-box;
+    border-radius: $alert-border-radius;
+    position: relative;
+    background-color: #fff;
+    overflow: hidden;
+    color: $font-default-light-color;
+    opacity: 1;
+    display: table;
+    transition: opacity .2s;
+
+    &__icon {
+      font-size: $alert-icon-size;
+      width: $alert-icon-size;
+      display: table-cell;
+      color: #fff;
+      vertical-align: middle;
+      &.is-big {
+        font-size: $alert-icon-large-size;
+        width: $alert-icon-large-size;
+      }
+    }
+
+    &__closebtn {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      bottom: 12px;
+      right: 15px;
+      opacity: 1;
+      color: $font-default-light-color;
+      font-size: $alert-close-font-size;
+      cursor: pointer;
+
+      &.is-customed {
+        font-style: normal;
+        font-size: $alert-close-customed-font-size;
+        top: 9px;
+      }
+    }
+
+    &--success {
+      border: 1px solid $alert-success-border;
+      background-color: $alert-success-bg;
+      .icon {
+        color: $alert-success-icon;
+      }
+    }
+
+    &--info {
+      border: 1px solid $alert-info-border;
+      background-color: $alert-info-bg;
+      .icon {
+        color: $alert-info-icon;
+      }
+    }
+
+    &--warning {
+      border: 1px solid $alert-warning-border;
+      background-color: $alert-warning-bg;
+      .icon {
+        color: $alert-warning-icon;
+      }
+    }
+
+    &--error {
+      border: 1px solid $alert-danger-border;
+      background-color: $alert-danger-bg;
+      .icon {
+        color: $alert-danger-icon;
+      }
+    }
+
+    &__content {
+      display: table-cell;
+      padding: 0 8px;
+    }
+
+    &__title {
+      font-size: $alert-title-font-size;
+      line-height: 18px;
+      &.is-bold {
+        font-weight: bold;
+      }
+    }
+
+    .ngui2-alert__description {
+      color: #fff;
+      font-size: $alert-description-font-size;
+      margin: 5px 0 0 0;
+    }
+  }
+
+  .ngui2-alert-fade-enter,
+  .ngui2-alert-fade-leave-active {
+    opacity: 0;
+  }

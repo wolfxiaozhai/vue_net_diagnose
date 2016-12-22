@@ -1,53 +1,89 @@
-//fonts
-$iconfont: "iconfont" !important;
-%font_606 {
-    font-family: $iconfont;
-    content: '\e606';
-    color: $brand-primary;
-    display: none\9;
+input[type="checkbox"] {
+    @include input-checkbox();
+    @include input-checkbox-color($primary-color, $primary-color, #fff);
+    width: 15px;
+    height: 15px;
+    &:checked:after{
+        top: 3px;
+        left: 2px;
+        height: 3px;
+        width: 6px;
+    }
 }
-.ngui-checkbox {
-    display: none;
-    display: inline-block\9;
-    &.disabled, &[disabled] {
-        + label {
-            cursor: not-allowed;
-            &:before {
-                content: '\e607';
-                display: none\9;
-                font-family: $iconfont;
-                color: $ngui-gray-darker-color;
-            }
+
+input.checkbox-lg {
+    width: 19px;
+    height: 19px;
+    &:checked:after{
+        height: 4px;
+        width: 9px;
+        left: 3px;
+        top: 3px;
+    }
+}
+
+
+$switchHeightDefaylt: 20px;
+$switchHeightLg: 24px;
+input.v-switch{
+    appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+    width: 32px;
+    height: $switchHeightDefaylt;
+    border: 1px solid #DFDFDF;
+    outline: 0;
+    border-radius: 16px;
+    box-sizing: border-box;
+    background: #DFDFDF;
+    &:before,&:after{
+        content: " ";
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 15px;
+        transition:transform .3s;
+    }
+    &:before{
+        width: 30px;
+        height: $switchHeightDefaylt - 2;
+        background-color: #FDFDFD;
+    }
+    &:after{
+        width: $switchHeightDefaylt - 2;
+        height: $switchHeightDefaylt - 2;
+        background-color: #FFFFFF;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+    &:checked{
+        border-color: $primary-color;
+        background-color: $primary-color;
+        &:before{
+            transform: scale(0);
         }
-        &:checked + label {
-            cursor: not-allowed;
-            &:before {
-                content: '\e606';
-                display: none\9;
-                font-family: $iconfont;
-                color: $ngui-gray-darker-color;
-            }
-        }
-        &.active {
-            cursor: not-allowed;
-            + label:before {
-                content: '\e606';
-                display: none\9;
-                font-family: $iconfont;
-                color: $ngui-gray-darker-color;
-            }
+        &:after{
+            top: 0px;
+            left: 2px;
+            transform: translateX(10px);
+
         }
     }
-    + label:before {
-        font-family: $iconfont;
-        content: "\e607";
-        display: none\9;
-        color: $brand-primary;
+}
+
+input.v-switch.v-switch-lg{
+    height: $switchHeightLg;
+    width: 41px;
+    &:before{
+        height: $switchHeightLg - 2;
+        width: 39px;
     }
-    &:checked + label:before {
-        @extend %font_606;
+    &:after{
+        width: $switchHeightLg - 2;
+        height: $switchHeightLg - 2;
     }
-    &.active + label:before {
-        @extend %font_606;
+    &:checked{
+        &:after{
+            transform: translateX(17px);
+        }
     }
 }

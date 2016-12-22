@@ -1,8 +1,13 @@
 <template>
   <div>
     <div style="display:block;padding-top:20px;">
-      <el-form ref="form" :model="form" label-width="80px" style="margin-top: 15px; margin-bottom: 15px;">
-        <el-row :gutter="20" style="margin-bottom:5px;margin-top:5px;">
+      <el-form 
+        ref="form" 
+        :model="form" 
+        label-width="80px" style="margin-top: 15px; margin-bottom: 15px;">
+        <el-row 
+          :gutter="20" 
+          style="margin-bottom:5px;margin-top:5px;">
           <el-col :span="6">
             <el-select v-model="form.status" clearable placeholder="请选择处理状态">
               <el-option label="未解决" value="0"></el-option>
@@ -19,17 +24,12 @@
             </el-select>
           </el-col>
           <el-col :span="6">
-            <el-input type="textarea" v-model="form.reason_detail" placeholder="原因详情"></el-input>
+            <el-input type="textarea" :autosize="{ minRows: 3, maxRows: 10}" v-model="form.reason_detail" placeholder="原因详情"></el-input>
           </el-col>
           <el-col :span="6">
             <el-button type="primary" @click="saveResult">保存</el-button>
           </el-col>
         </el-row>
-        <!--<el-row :gutter="20" style="margin-bottom:5px;margin-top:5px;">
-          <el-col :span="6">
-            <el-button type="primary" @click="saveResult">保存</el-button>
-          </el-col>
-        </el-row>-->
       </el-form>
     </div>
     <h2>商家{{ diagnose_data.username }}的DNS检测信息</h2>
@@ -71,7 +71,7 @@
         </tr>
       </tbody>
     </table>
-    <h2>以下是美团·点评域名的测试结果</h2>
+    <h2>以下是内部域名的测试结果</h2>
     <table class="data-table" v-if="diagnose_data.in_network_list">
         <tbody>
         <tr v-for="item in diagnose_data.in_network_list">
@@ -95,14 +95,14 @@
 </template>
 
 <script>
-  import $ from "jquery";
+  import $ from 'jquery'
   export default {
     data () {
       return {
         form: {
           status: '',
           reason_type: '',
-          reason_detail: '',
+          reason_detail: ''
         },
         diagnose_data: {
           localIP: '',
@@ -114,7 +114,7 @@
           browser: '',
           in_network_list: [],
           out_network_list: []
-        },
+        }
       }
     },
     mounted () {
@@ -122,45 +122,47 @@
     },
     methods: {
       fetchDetectData () {
-        let record_id = this.$route.params.row_index;
-        console.log(record_id)
+        let recordId = this.$route.params.row_index
         $.ajax({
-          type: "post",
-          data: {'record_id': record_id},
-          url: "/dns/api/get_dns_detect_data_by_id/",
-          dataType: "json",
+          type: 'post',
+          data: {'record_id': recordId},
+          url: '/dns/api/get_dns_detect_data_by_id/',
+          dataType: 'json',
           success: (data) => {
-            this.form = data.detect_result_data;
+            this.form = data.detect_result_data
             this.diagnose_data = data.dns_detect_data
           }
         })
       },
       saveResult () {
-        let formData = this.form;
+        let formData = this.form
         let params = {
           'dns_detect_id': this.$route.params.row_index,
-          'service': '团购',
+          'service': '',
           'status': formData.status,
           'reason_type': formData.reason_type,
           'reason_detail': formData.reason_detail,
-          'op': this.$store.getters.getUserName,
-        };
-        console.log(params);
+          'op': this.$store.getters.getUserName
+        }
+        console.log(params)
         $.ajax({
-          type: "post",
+          type: 'post',
           data: params,
-          url: "/dns/api/save_dns_result/",
-          dataType: "json",
+          url: '/dns/api/save_dns_result/',
+          dataType: 'json',
           success: (data) => {
             if (data.ok) {
-              alert("Save success");
-            }else{
-              alert("Save failed");
+              this.$message({
+                message: '保存成功',
+                type: 'success'
+              })
+            } else {
+              this.$message.error('保存失败')
             }
           }
         })
       }
-    },
+    }
 
   }
 </script>

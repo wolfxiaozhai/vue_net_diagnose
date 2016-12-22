@@ -1,6 +1,3 @@
-/**
- * @author: maquan@meituan.com
- */
 // Reset
 @import "./_normalize.scss";
 // Theme
@@ -20,26 +17,27 @@
 @import "./elements/mixins/_table-row.scss";
 @import "./elements/mixins/_forms.scss";
 @import "./elements/mixins/_vendor-prefixes.scss";
-@import "./elements/mixins/_alert.scss";
 @import "./elements/mixins/_nav-divider.scss";
-@import "./elements/mixins/_nav-vertical-align.scss";
 @import "./elements/mixins/_responsive-visibility.scss";
 @import "./elements/mixins/_hide-text.scss";
 @import "./elements/mixins/_center-block.scss";
 @import "./elements/mixins/_image.scss";
 @import "./elements/mixins/_pagination.scss";
+
+// Fontfamily
+@import "./xiguafont/style.scss";
+
 // Core Css
 @import "./elements/_component-animations.scss";
-@import "./iconfont/iconfont.scss";
 @import "./elements/_font.scss";
 @import "./elements/_colors.scss";
+@import "./elements/_transition.scss";
 @import "./elements/_button-groups.scss";
 @import "./elements/_buttons.scss";
-@import "./elements/_breadcrumbs.scss";
+@import "./elements/_breadcrumb.scss";
 @import "./elements/_header.scss";
 @import "./elements/_input.scss";
 @import "./elements/_labels.scss";
-@import "./elements/_loading.scss";
 @import "./elements/_rating.scss";
 @import "./elements/_tab.scss";
 @import "./elements/_grid.scss";
@@ -47,19 +45,17 @@
 @import "./elements/_tables.scss";
 @import "./elements/_forms.scss";
 @import "./elements/_navs.scss";
-// @import "./elements/_navbar.scss";
 @import "./elements/_progressbar.scss";
-@import "./elements/_alerts.scss";
-@import "./elements/_logo.scss";
+@import "./elements/_alert.scss";
 @import "./elements/_responsive-embed.scss";
 @import "./elements/_responsive-utilities.scss";
 @import "./elements/_utilities.scss";
 @import "./elements/_scaffolding.scss";
 @import "./elements/_close.scss";
 @import "./elements/_modal.scss";
-@import "./elements/_pager.scss";
 @import "./elements/_pagination.scss";
-@import "./elements/_popovers.scss";
 @import "./elements/_radio.scss";
 @import "./elements/_checkbox.scss";
+@import "./elements/_dropdown.scss";
+@import "./elements/_loading.scss";
 @import "./elements/_type.scss";

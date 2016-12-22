@@ -1,53 +1,23 @@
-//fonts
-$iconfont: "iconfont" !important;
-%font-604 {
-    font-family: $iconfont;
-    content: '\e604';
-    color: $brand-primary;
-    display: none\9;
+input[type=radio] {
+    @include input-radio();
+    @include input-radio-color($primary-color, $primary-color);
+    width: 15px;
+    height: 15px;
+    &:checked:before{
+        height: 7px;
+        width: 7px;
+        border-radius: 100%;
+        margin: 3px 0 0 3px;
+    }
 }
-.ngui-radio {
-    display: none;
-    display: inline-block\9;
-    &.disabled, &[disabled] {
-        + label {
-            cursor: not-allowed;
-            &:before {
-                content: '\e605';
-                display: none\9;
-                font-family: $iconfont;
-                color: $ngui-gray-darker-color;
-            }
-        }
-        &:checked + label {
-            cursor: not-allowed;
-            &:before {
-                content: '\e604';
-                display: none\9;
-                font-family: $iconfont;
-                color: $ngui-gray-darker-color;
-            }
-        }
-        &.active {
-            cursor: not-allowed;
-            + label:before {
-                content: '\e604';
-                display: none\9;
-                font-family: $iconfont;
-                color: $ngui-gray-darker-color;
-            }
-        }
-    }
-    + label:before {
-        font-family: $iconfont;
-        content: "\e605";
-        display: none\9;
-        color: $brand-primary;
-    }
-    &:checked + label:before {
-        @extend %font-604;
-    }
-    &.active + label:before {
-        @extend %font-604;
+
+input.radio-lg {
+    width: 19px;
+    height: 19px;
+    &:checked:before{
+        height: 11px;
+        width: 11px;
+        border-radius: 100%;
+        margin: 3px 0 0 3px;
     }
 }

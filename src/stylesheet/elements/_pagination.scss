@@ -1,14 +1,11 @@
 //
 // Pagination (multiple pages)
 // --------------------------------------------------
-$border-radius-base: 0;
-$border-radius-large: 0;
-$border-radius-small: 0;
 .pagination {
     display: inline-block;
     padding-left: 0;
     margin: $line-height-computed 0;
-    border-radius: $border-radius-base;
+    border-radius: $pagination-radius-base;
     > li {
         display: inline; // Remove list-style and block-level defaults
          > span,
@@ -28,14 +25,14 @@ $border-radius-small: 0;
             > a {
                 margin-left: 0;
                 margin-right: 10px;
-                @include border-left-radius($border-radius-base);
+                @include border-left-radius($pagination-radius-base);
             }
         }
         &:last-child {
              > span,
             > a {
                 margin-left: 10px;
-                @include border-right-radius($border-radius-base);
+                @include border-right-radius($pagination-radius-base);
             }
         }
     }
@@ -79,9 +76,9 @@ $border-radius-small: 0;
 // --------------------------------------------------
 // Large
 .pagination-lg {
-    @include pagination-size($padding-large-vertical, $padding-large-horizontal, $font-size-large, $line-height-large, $border-radius-large);
+    @include pagination-size($padding-large-vertical, $padding-large-horizontal, $font-size-large, $line-height-large, $pagination-radius-large);
 }
 // Small
 .pagination-sm {
-    @include pagination-size($padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, $border-radius-small);
+    @include pagination-size($padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, $pagination-radius-small);
 }

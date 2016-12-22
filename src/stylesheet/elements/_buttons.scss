@@ -21,7 +21,6 @@
     &.active {
         &:focus,
         &.focus {
-            @include tab-focus;
             outline:0;
         }
     }
@@ -47,6 +46,7 @@
     }
     // [converter] extracted a& to a.btn
 }
+
 a.btn {
     &.disabled,
     fieldset[disabled] & {
@@ -68,38 +68,7 @@ a.btn {
         background-color: $btn-primary-outline-hover-bg-color;
     }
 }
-.btn-normal {
-    @include button-variant($btn-primary-outline-color, $btn-primary-outline-bg, $btn-primary-outline-border);
-    border: 1px solid $table-border-color;
-    &:hover,
-    &:active,
-    &:focus,
-    &.selected,
-    &.active {
-        background-color: $brand-primary;
-        color: $component-active-color;
-        border: 1px solid $brand-primary;
-        box-shadow: none;
-        outline:0;
-        &:focus,
-        &.focus {
-            background-color: $brand-primary;
-            color: $component-active-color;
-            border: 1px solid $brand-primary;
-            box-shadow: none;
-            outline:0;
-        }
-    }
 
-}
-// Success appears as green
-.btn-success {
-    @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
-}
-// Info appears as blue-green
-.btn-info {
-    @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
-}
 // Warning appears as orange
 .btn-warning {
     @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
@@ -171,11 +140,11 @@ a.btn {
 .btn-block + .btn-block {
     margin-top: 5px;
 }
-// Specificity overrides
-input[type="submit"],
-input[type="reset"],
-input[type="button"] {
-    &.btn-block {
-        width: 100%;
-    }
-}
+// // Specificity overrides
+// input[type="submit"],
+// input[type="reset"],
+// input[type="button"] {
+//     &.btn-block {
+//         width: 100%;
+//     }
+// }

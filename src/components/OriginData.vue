@@ -1,7 +1,11 @@
 <template>
   <div>
-    <el-form ref="form" :model="form" label-width="80px" style="margin-top: 15px; margin-bottom: 15px;">
-      <el-row :gutter="20" style="margin-bottom:5px;margin-top:5px;">
+    <el-form ref="form" 
+      :model="form" 
+      label-width="80px" style="margin-top: 15px; margin-bottom: 15px;">
+      <el-row 
+        :gutter="20" 
+        style="margin-bottom:5px;margin-top:5px;">
         <el-col :span="6">
           <el-input v-model="form.username" placeholder="商家名称"></el-input>
         </el-col>
@@ -24,7 +28,9 @@
           </el-select>
         </el-col>
       </el-row>
-      <el-row :gutter="20" style="margin-bottom:5px;margin-top:5px;">
+      <el-row 
+        :gutter="20" 
+        style="margin-bottom:5px;margin-top:5px;">
         <el-col :span="6">
           <el-input v-model="form.op" placeholder="操作人"></el-input>
         </el-col>
@@ -39,7 +45,11 @@
         </el-col>
       </el-row>
     </el-form>
-    <el-table :data="tableData" stripe border style="width: 100%">
+    <el-table 
+      v-loading.body="loading" 
+      :data="tableData"
+      stripe border 
+      style="width: 100%">
       <el-table-column prop="username" label="商家帐号" ></el-table-column>
       <el-table-column prop="service" label="业务名称" ></el-table-column>
       <el-table-column prop="status" label="状态" ></el-table-column>
@@ -47,12 +57,11 @@
       <el-table-column prop="op" label="操作人" ></el-table-column>
       <el-table-column prop="create_date" label="创建时间" ></el-table-column>
       <el-table-column prop="diagnose_date" label="诊断时间" ></el-table-column>
-      <el-table-column :context="_self" inline-template label="操作" min-width="100">
+      <el-table-column :context="_self" inline-template label="操作" min-width="80">
         <div>
             <el-button size="small">
               <router-link :to="{ name: 'edit', params: { row_index: id_list[$index] }}">编辑</router-link>
             </el-button>
-            <el-button size="small" type="danger" @click="handleDelete($index, row)">删除</el-button>
         </div>
       </el-table-column>
     </el-table>
@@ -80,6 +89,7 @@
         currentPage: 1,
         total: 0,
         tableData: [],
+        loading: true,
         form: {
           username: '',
           service: '',
@@ -87,30 +97,31 @@
           reason_type: '',
           op: '',
           create_date: '',
-          diagnose_date: '',
+          diagnose_date: ''
         }
       }
     },
     mounted () {
-        this.getOriginData()
+      this.getOriginData()
     },
     methods: {
       handleCurrentChange (val) {
-        this.currentPage = val;
-        this.getOriginData();
+        this.currentPage = val
+        this.getOriginData()
       },
       getOriginData () {
-        let formData = this.form;
-        let create_date = formData.create_date;
-        let create_ts = 0;
-        if (create_date.toString() != ''){
-          create_ts = create_date.getTime()
-        };
-        let diagnose_ts = 0;
-        let diagnose_date = formData.diagnose_date;
-        if (diagnose_date.toString() != ''){
-          diagnose_ts =  diagnose_date.getTime()
-        };
+        this.loading = true
+        let formData = this.form
+        let createDate = formData.create_date
+        let createTs = 0
+        if (createDate.toString() !== '') {
+          createTs = createDate.getTime()
+        }
+        let diagnoseTs = 0
+        let diagnoseDate = formData.diagnose_date
+        if (diagnoseDate.toString() !== '') {
+          diagnoseTs = diagnoseDate.getTime()
+        }
         let params = {
           'page_size': this.pageSize,
           'current_page': this.currentPage,
@@ -119,27 +130,21 @@
           'status': formData.status,
           'reason_type': formData.reason_type,
           'op': formData.op,
-          'create_ts': create_ts,
-          'diagnose_ts': diagnose_ts
-        };
+          'create_ts': createTs,
+          'diagnose_ts': diagnoseTs
+        }
         $.ajax({
           type: 'post',
           data: params,
-          url: "/dns/api/get_dns_detect_data/",
-          dataType: "json",
+          url: '/dns/api/get_dns_detect_data/',
+          dataType: 'json',
           success: (data) => {
-            this.total = data.total;
-            this.tableData = data.data;
+            this.total = data.total
+            this.tableData = data.data
             this.id_list = data.id_list
+            this.loading = false
           }
         })
-      },
-      handleEdit (index, row) {
-        alert(index);
-        alert(row.id);
-      },
-      handleDelete (index, row) {
-        alert("delete this line");
       }
     }
   }

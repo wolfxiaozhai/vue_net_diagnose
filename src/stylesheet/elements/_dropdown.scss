@@ -1,0 +1,70 @@
+.ngui2-dropdown {
+  display: inline-block;
+  position: relative;
+  font-size: $dropdown-font-size;
+
+  .ngui2-button-group {
+    display: block;
+  }
+
+  .ngui2-dropdown__caret-button {
+    min-width: 0;
+    border-left: 1px solid #fff;
+  }
+
+  .ngui2-dropdown-link {
+    color: $font-link-color;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__icon {
+    font-size: 12px;
+  }
+}
+.ngui2-dropdown-menu {
+  margin: 5px 0;
+  background-color: $dropdown-menu-bg-color;
+  border: 1px solid $dropdown-border-color;
+  box-shadow: $dropdown-menu-box-shadow;
+  padding: 6px 0;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: $dropdown-menu-color;
+  min-width: $dropdown-menu-min-width;
+  max-height: $dropdown-menu-max-height;
+  overflow-y: auto;
+
+  &__item {
+    list-style: none;
+    line-height: $dropdown-menuItem-lineheight;
+    padding: 0 $dropdown-menuItem-padding;
+    margin: 0;
+    cursor: pointer;
+
+    &:not(.is-disabled):hover {
+      background-color: $dropdown-menuItem-hover-fill;
+    }
+    &--divided {
+      position: relative;
+      margin-top: 6px;
+      border-top: 1px solid $dropdown-menuItem-divided-color;
+
+      &:before {
+        content: '';
+        height: 6px;
+        display: block;
+        margin: 0 0-$dropdown-menuItem-padding;
+        background-color: $dropdown-menu-bg-color;
+      }
+    }
+    &.is-disabled {
+      cursor: default;
+      color: $link-disable-color;
+      pointer-events: none;
+    }
+  }
+}

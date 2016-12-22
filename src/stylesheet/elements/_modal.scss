@@ -1,124 +1,180 @@
-.ngui-modal-open {
-  overflow: hidden;
-  .ngui-modal {
-    overflow-x: hidden;
-    overflow-y: auto
-  }
-}
-.ngui-modal-backdrop {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background-color: #000
-}
-.ngui-modal-backdrop.fade {
-  opacity: 0;
-  filter: alpha(opacity=0)
-}
-.ngui-modal-backdrop.in {
-  opacity: .4;
-  filter: alpha(opacity=40)
-}
-.ngui-modal {
-  display: none;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1040;
-  -webkit-overflow-scrolling: touch;
-  outline: 0
-}
-.ngui-modal-dialog {
-  background-color: #fff;
-  margin: 70px 0;
-  position: absolute;
-  border: 1px solid #ccc;
-  min-width: 240px;
-  max-width: 700px;
-  &.ngui-modal-sm {
-    min-width: 180px;
-    .ngui-modal-body {
-      padding: 20px;
-    }
-  }
 
-  .close {
-    position: absolute;
-    z-index: 1;
-    right: 0;
-    padding: 7px;
-    cursor: pointer;
-    &:focus {
-      outline: none;
-    }
-  }
-  .ngui-modal-header {
-    background-color: #f7f7f7;
-    &:after {
-      content: '\20';
-      display: table;
-      clear: both;
-    }
-  }
-  .ngui-modal-title {
-    margin: 0;
-    padding: 10px 16px;
-    line-height: 1.42857;
-    font-size: 14px;
-  }
-  .ngui-modal-body {
-    padding: 30px;
-  }
+// 遮罩层
+.v-modal-enter {
+    animation: v-modal-in 0.2s ease;
+}
 
-  .dialog-content-panel {
-    padding-top: 5px;
+.v-modal-leave {
+    animation: v-modal-out 0.2s ease forwards;
+}
+@keyframes v-modal-in {
+    0% {
+        opacity: 0;
+    }
+}
+@keyframes v-modal-out {
+    to {
+        opacity: 0;
+    }
+}
+
+.v-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    background: #000;
+}
+
+.xigua-modal-open {
     overflow: hidden;
-    .dialog-title {
-      font-size: 20px;
-      margin-bottom: 5px;
-    }
-  }
 
-  .ngui-modal-footer {
-    padding: 0;
-    border: 0 none;
-    text-align: center;
-    padding-bottom: 30px;
-    .btn {
-      margin:0 10px;
+    .xigua-modal {
+        overflow-x: hidden;
+        overflow-y: auto;
     }
-  }
-  .ngui-modal-btns {
-    margin-top: 20px;
-    text-align: center;
-    .btn {
-      margin: 0 10px;
-    }
-  }
+}
 
-  // 带icon的内容去
-  .has-tip-icon {
+.xigua-modal {
+    display: none;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+}
+
+.xigua-modal-dialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+
+    .xigua-modal-content {
+        position: absolute;
+        top: 15%;
+        left: 50%;
+        background-color: #fff;
+        margin: 70px 0;
+        border: 1px solid #ccc;
+        min-width: 330px;
+        max-width: 700px;
+        transform: translateX(-50%);
+    }
+
+    .xigua-modal-body {
+        padding: 30px;
+    }
+
+    .xigua-modal-xs {
+        min-width: 110px;
+        width: 110px;
+
+        .xigua-modal-body {
+            padding: 10px;
+        }
+    }
+
+    .xigua-modal-sm {
+        min-width: 200px;
+        width: 200px;
+
+        .xigua-modal-body {
+            padding: 20px;
+        }
+    }
+
+    .xigua-modal-lg {
+        width: 700px;
+    }
+
+    .close {
+        position: absolute;
+        z-index: 1;
+        right: 0;
+        padding: 7px;
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .xigua-modal-header {
+        background-color: #f7f7f7;
+
+        &:after {
+            content: '\20';
+            display: table;
+            clear: both;
+        }
+    }
+
+    .xigua-modal-title {
+        margin: 0;
+        padding: 10px 16px;
+        line-height: 1.42857;
+        font-size: 14px;
+    }
+
     .dialog-content-panel {
-      padding-left: 40px;
-      .ngui-icon {
-        font-size: 32px;
-        line-height: 1;
-        float: left;
-        margin: -3px 0 0 -40px;
-      }
+        padding-top: 5px;
+        overflow: hidden;
+
+        .dialog-title {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
     }
-    .ngui-modal-btns {
-      padding-left: 40px;
-      text-align: left;
-      .btn {
-        margin-right: 10px;
-        margin-left: 0;
-      }
+
+    .xigua-modal-footer {
+        padding: 0;
+        border: 0 none;
+        text-align: center;
+        padding-bottom: 30px;
+
+        .btn {
+            margin: 0 10px;
+        }
     }
-  }
+
+    .xigua-modal-btns {
+        margin-top: 20px;
+        text-align: center;
+
+        .btn {
+            margin: 0 10px;
+        }
+    }
+    // 带icon的内容去
+    .has-tip-icon {
+        .dialog-content-panel {
+            padding-left: 40px;
+
+            .ngui-icon {
+                font-size: 32px;
+                line-height: 1;
+                float: left;
+                margin: -3px 0 0 -40px;
+            }
+        }
+
+        .xigua-modal-btns {
+            padding-left: 40px;
+            text-align: left;
+
+            .btn {
+                margin-right: 10px;
+                margin-left: 0;
+            }
+        }
+    }
 }
