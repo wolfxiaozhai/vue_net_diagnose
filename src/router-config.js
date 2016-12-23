@@ -1,5 +1,5 @@
-import OriginData from './components/OriginData.vue'
-import EditRow from './components/EditRow.vue'
+import OriginData from './components/NetDiagnose/OriginData.vue'
+import EditRow from './components/NetDiagnose/EditRow.vue'
 
 /* module.exports = [
   {
