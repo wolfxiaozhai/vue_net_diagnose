@@ -9,7 +9,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import App from './App.vue'
 import '../src/stylesheet/index.scss'
-import { netRoutes, otherRoutes } from './router-config'
+import { netRoutes, otherRoutes } from './route/router-config'
 import store from './vuex/store'
 
 Vue.use(VueRouter)

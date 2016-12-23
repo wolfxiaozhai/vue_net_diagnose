@@ -154,10 +154,15 @@
             if (data.ok) {
               this.$message({
                 message: '保存成功',
-                type: 'success'
+                type: 'success',
+                showClose: true
               })
             } else {
-              this.$message.error('保存失败')
+              this.$message({
+                message: '保存失败',
+                type: 'error',
+                showClose: true
+              })
             }
           }
         })
