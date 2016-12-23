@@ -46,7 +46,8 @@
       </el-row>
     </el-form>
     <el-table 
-      v-loading.body="loading" 
+      v-loading.body="loading"
+      element-loading-text="拼命加载中"
       :data="tableData"
       stripe border 
       style="width: 100%">
