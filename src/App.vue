@@ -68,7 +68,7 @@
           dataType: 'json',
           success: (data) => {
             console.log(data)
-            if (data.username !== '') {
+            if (data.username !== null & data.username !== '') {
               this.$store.dispatch('setUserName', data.username)
               this.user_name = this.$store.getters.getUserName
               this.redirect_url = data.redirect_url
