@@ -12,7 +12,7 @@
         </el-dropdown>
       </div>
       <div class="menu-bar">
-          <a href="#" @click="zysToggleMenu()"><i class="icon icon-bars"></i></a>
+          <a @click="zysToggleMenu()"><i class="icon icon-bars"></i></a>
       </div>
     </header>
     <div class="container-fluid">
