@@ -23,11 +23,11 @@
             <h2>Diagnose</h2>
           </div>
           <div>
-            <ngui2-menu :collapsed="collapsed" :unique-opened="false" :router="true">
-              <ngui2-submenu index="1">
+            <v-menu :collapsed="collapsed" :unique-opened="false" :router="true">
+              <v-submenu index="1">
                   <template slot="title"><i class="icon icon-bars"></i> 网络诊断</template>
-                  <ngui2-menu-item index="/">诊断记录</ngui2-menu-item>
-              </ngui2-submenu>
+                  <v-menu-item index="/">诊断记录</v-menu-item>
+              </v-submenu>
             </div>
         </div>
         <div class="layout-main">
