@@ -12,9 +12,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    setUserName ({commit}, username) {
-      commit('SET_USERNAME', username)
-    }
+    setUserName: ({commit}, username) => { commit('SET_USERNAME', username) }
   },
   getters: {
     getUserName: (state) => state.username

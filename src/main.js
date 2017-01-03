@@ -15,8 +15,6 @@ import store from './vuex/store'
 Vue.use(VueRouter)
 Vue.use(ElementUI)
 
-console.log(netRoutes)
-
 const router = new VueRouter({
   mode: 'hash',
   routes: []
