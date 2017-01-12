@@ -18,9 +18,11 @@
     <div class="container-fluid">
       <div class="layout-content">
         <div class="layout-sidebar">
-          <div style="height:60px;">
-            <h1>Diagnose</h1>
-            <h2>Diagnose</h2>
+          <div style="height:60px;" class="home_title_link">
+            <router-link :to="{ name: 'home'}">
+              <h1>Diagnose</h1>
+              <h2>Diagnose</h2>
+            </router-link>
           </div>
           <div>
             <v-menu :collapsed="collapsed" :unique-opened="false" :router="true">
@@ -90,5 +92,9 @@
   padding-top: 20px;
   float: right;
   margin: 0;
+}
+
+.home_title_link .router-link-active {
+  color: #fff;
 }
 </style>

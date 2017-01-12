@@ -1,5 +1,6 @@
 import OriginData from '../components/NetDiagnose/OriginData.vue'
 import EditRow from '../components/NetDiagnose/EditRow.vue'
+import Navigator from '../components/Home/Navigator.vue'
 
 /* module.exports = [
   {
@@ -15,18 +16,22 @@ import EditRow from '../components/NetDiagnose/EditRow.vue'
 
 let netRoutes = [
   {
-    path: '/',
+    path: '/net/',
     name: 'diagnose',
-    des: '网络记录',
     component: OriginData
+  },
+  {
+    path: '/net/edit/:row_index',
+    name: 'edit',
+    component: EditRow
   }
 ]
 
 let otherRoutes = [
   {
-    path: '/net/edit/:row_index',
-    name: 'edit',
-    component: EditRow
+    path: '/',
+    name: 'home',
+    component: Navigator
   }
 ]
 

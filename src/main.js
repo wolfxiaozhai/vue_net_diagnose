@@ -8,12 +8,19 @@ Xigua.install(Vue)
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import App from './App.vue'
-import '../src/stylesheet/index.scss'
+import './stylesheet/index.scss'
+
+import './zys/styles/index.scss'
+import Zys from './zys/index.js'
+Zys.install(Vue)
+
 import { netRoutes, otherRoutes } from './route/router-config'
 import store from './vuex/store'
 
 Vue.use(VueRouter)
 Vue.use(ElementUI)
+
+console.log(netRoutes)
 
 const router = new VueRouter({
   mode: 'hash',

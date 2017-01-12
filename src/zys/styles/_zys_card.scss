@@ -1,0 +1,29 @@
+.home_card {
+  height:200px;
+  border: 1px solid #D3DCE6;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
+}
+
+.home_card_header {
+  height: 40px;
+  background: lightblue;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.home_card_content {
+  padding:5px 0px;
+  font-size: 13px;
+}
+
+.home_card_content a {
+  color: black;
+}
+
+.home_card_title {
+  font-size: 16px;
+  font-weight: bold;
+  font-family: serif;
+}
