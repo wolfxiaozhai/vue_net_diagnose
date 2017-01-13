@@ -105,5 +105,6 @@
 
 .home_title_link .router-link-active {
   color: #fff;
+  text-decoration: none;
 }
 </style>
