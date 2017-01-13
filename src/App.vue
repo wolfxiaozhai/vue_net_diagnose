@@ -32,8 +32,11 @@
               </v-submenu>
             </div>
         </div>
-        <div class="layout-main">
+        <div class="layout-main" :style="{display: main_content_display}">
           <router-view></router-view>
+        </div>
+        <div class="layout-main" id="home_error_content" style="{display: error_content_display}">
+          <h1>后台程序挂了，全部功能失效，请联系zys</h1>
         </div>
       </div>
     </div>
@@ -49,7 +52,9 @@
       return {
         user_name: '',
         collapsed: false,
-        redirect_url: ''
+        redirect_url: '',
+        main_content_display: '',
+        error_content_display: 'none'
       }
     },
     mounted () {
@@ -77,6 +82,10 @@
             } else {
               window.location.href = data.redirect_url
             }
+          },
+          error: (data) => {
+            this.error_content_display = ''
+            this.main_content_display = 'none'
           }
         })
       },

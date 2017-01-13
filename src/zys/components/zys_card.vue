@@ -8,10 +8,10 @@
           </span>
         </div>
         <div class="home_card_content">
-          <div style="padding:1px 10px;" v-for="link in card_links">
+          <div class="home_card_link_item" v-for="link in card_links">
             <router-link :to="{ name: link.name }">{{ link.title }}</router-link>
           </div>
-          <div style="padding:1px 10px;" v-for="link in card_outer_links">
+          <div class="home_card_link_item" v-for="link in card_outer_links">
             <a :href="link.name" target="_blank">{{ link.title }}</a>
           </div>
         </div>
