@@ -8,7 +8,7 @@
         <template slot="card_title">域名相关</template>
       </ZysCard>
       <ZysCard
-        :card_links="card_links2"
+        :card_inner_links="card_inner_links2"
         :card_item_png="card_item_png"
         :card_title_png="card_title_png11">
         <template slot="card_title">网络诊断</template>
@@ -35,7 +35,7 @@ export default {
           title: '美团'
         }
       ],
-      card_links2: [
+      card_inner_links2: [
         {
           name: 'diagnose',
           title: '网络诊断记录'
