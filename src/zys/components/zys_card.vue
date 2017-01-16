@@ -16,6 +16,9 @@
           'home_card_link_item',
           index%2 ==0 ? 'home_card_link_item_even' : 'home_card_link_item_odd'
         ]"
+        :id="'card_inner_link_item'+card_flag+index"
+        @mouseenter="onActive"
+        @mouseleave="offActive"
         >
           <img :src="card_item_png">
           <router-link :to="{ name: link.name }">{{ link.title }}</router-link>
@@ -26,6 +29,9 @@
             'home_card_link_item',
             index%2 ==0 ? 'home_card_link_item_even' : 'home_card_link_item_odd'
           ]"
+          :id="'card_outer_link_item'+card_flag+index"
+          @mouseenter="onActive"
+          @mouseleave="offActive"
           >
           <img :src="card_item_png">
           <a :href="link.name" target="_blank">{{ link.title }}</a>
@@ -61,6 +67,20 @@ export default {
     },
     card_item_png: {
       required: false
+    },
+    card_flag: {
+      type: Number,
+      required: true
+    }
+  },
+  methods: {
+    onActive (event) {
+      let targetId = event.target.getAttribute('id')
+      document.getElementById(targetId).style.cssText = 'background-color: #ccc'
+    },
+    offActive (event) {
+      let targetId = event.target.getAttribute('id')
+      document.getElementById(targetId).style.cssText = 'background-color: '
     }
   }
 }
