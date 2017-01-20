@@ -1,10 +1,10 @@
 <template>
   <div>
-    <el-form ref="form" 
-      :model="form" 
+    <el-form ref="form"
+      :model="form"
       label-width="80px" style="margin-top: 15px; margin-bottom: 15px;">
-      <el-row 
-        :gutter="20" 
+      <el-row
+        :gutter="20"
         style="margin-bottom:5px;margin-top:5px;">
         <el-col :span="6">
           <el-input v-model="form.username" placeholder="商家名称"></el-input>
@@ -28,8 +28,8 @@
           </el-select>
         </el-col>
       </el-row>
-      <el-row 
-        :gutter="20" 
+      <el-row
+        :gutter="20"
         style="margin-bottom:5px;margin-top:5px;">
         <el-col :span="6">
           <el-input v-model="form.op" placeholder="操作人"></el-input>
@@ -45,11 +45,11 @@
         </el-col>
       </el-row>
     </el-form>
-    <el-table 
+    <el-table
       v-loading.body="loading"
       element-loading-text="拼命加载中"
       :data="tableData"
-      stripe border 
+      stripe border
       style="width: 100%">
       <el-table-column prop="username" label="商家帐号" ></el-table-column>
       <el-table-column prop="service" label="业务名称" ></el-table-column>
@@ -60,8 +60,8 @@
       <el-table-column prop="diagnose_date" label="诊断时间" ></el-table-column>
       <el-table-column :context="_self" inline-template label="操作" min-width="80">
         <div>
-            <el-button size="small">
-              <router-link :to="{ name: 'edit', params: { row_index: id_list[$index] }}">编辑</router-link>
+            <el-button size="small" class="net-diagnose-button">
+              <router-link style="text-decoration:none" :to="{ name: 'edit', params: { row_index: id_list[$index] }}">编辑</router-link>
             </el-button>
         </div>
       </el-table-column>
@@ -150,3 +150,9 @@
     }
   }
 </script>
+
+<style>
+.net-diagnose-button {
+  padding: 7px 3px;
+}
+</style>

@@ -35,7 +35,7 @@
         <div class="layout-main" :style="{display: main_content_display}">
           <router-view></router-view>
         </div>
-        <div class="layout-main" id="home_error_content" style="{display: error_content_display}">
+        <div class="layout-main" id="error_content" :style="{display: error_content_display}">
           <h1>后台程序挂了，全部功能失效，请联系zys</h1>
         </div>
       </div>
@@ -74,7 +74,7 @@
           type: 'GET',
           dataType: 'json',
           success: (data) => {
-            console.log(data)
+            // console.log(data)
             if (data.username !== null & data.username !== '') {
               this.$store.dispatch('setUserName', data.username)
               this.user_name = this.$store.getters.getUserName
