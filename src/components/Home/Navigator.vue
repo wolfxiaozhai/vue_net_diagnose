@@ -2,6 +2,7 @@
   <div class="home_content">
     <el-row>
       <ZysCard
+        stripped
         :card_outer_links="card_outer_links11"
         :card_item_png="card_item_png"
         :card_title_png="card_title_png11"
@@ -9,6 +10,7 @@
         <template slot="card_title">域名相关</template>
       </ZysCard>
       <ZysCard
+        stripped
         :card_inner_links="card_inner_links12"
         :card_item_png="card_item_png"
         :card_title_png="card_title_png11"

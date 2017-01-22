@@ -14,7 +14,7 @@
         <div v-for="(link, index) in card_inner_links"
         :class="[
           'home_card_link_item',
-          index%2 ==0 ? 'home_card_link_item_even' : 'home_card_link_item_odd'
+          stripped && index%2 ==0 ? 'home_card_link_item_even' : 'home_card_link_item_odd'
         ]"
         :id="'card_inner_link_item'+card_flag+index"
         @mouseenter="onActive"
@@ -27,7 +27,7 @@
         <div v-for="(link, index) in card_outer_links"
           :class="[
             'home_card_link_item',
-            index%2 ==0 ? 'home_card_link_item_even' : 'home_card_link_item_odd'
+            stripped && index%2 ==0 ? 'home_card_link_item_even' : 'home_card_link_item_odd'
           ]"
           :id="'card_outer_link_item'+card_flag+index"
           @mouseenter="onActive"
@@ -44,6 +44,11 @@
 <script>
 export default {
   props: {
+    stripped: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
     card_inner_links: {
       type: Array,
       required: false
