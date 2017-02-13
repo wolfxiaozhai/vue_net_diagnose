@@ -1,6 +1,7 @@
 import OriginData from '../components/NetDiagnose/OriginData.vue'
 import EditRow from '../components/NetDiagnose/EditRow.vue'
 import Navigator from '../components/Home/Navigator.vue'
+import CallTest from '../components/CallGraphs/CallTest.vue'
 
 /* module.exports = [
   {
@@ -27,6 +28,14 @@ let netRoutes = [
   }
 ]
 
+let graphRoutes = [
+  {
+    path: '/graph/test_service/',
+    name: 'test_service',
+    component: CallTest
+  }
+]
+
 let otherRoutes = [
   {
     path: '/',
@@ -35,4 +44,4 @@ let otherRoutes = [
   }
 ]
 
-export { netRoutes, otherRoutes }
+export { netRoutes, otherRoutes, graphRoutes }

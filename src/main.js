@@ -14,19 +14,18 @@ import './zys/styles/index.scss'
 import Zys from './zys/index.js'
 Zys.install(Vue)
 
-import { netRoutes, otherRoutes } from './route/router-config'
+import { netRoutes, otherRoutes, graphRoutes } from './route/router-config'
 import store from './vuex/store'
 
 Vue.use(VueRouter)
 Vue.use(ElementUI)
-
-console.log(netRoutes)
 
 const router = new VueRouter({
   mode: 'hash',
   routes: []
     .concat(netRoutes)
     .concat(otherRoutes)
+    .concat(graphRoutes)
 })
 
 new Vue({
