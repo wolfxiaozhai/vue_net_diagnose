@@ -1,6 +1,9 @@
 <template>
   <div>
-    <call-graph :originData="originData"></call-graph>
+    <call-graph
+      graphTitle="调用关系构建"
+      :originData="originData"
+      layout="circular"></call-graph>
   </div>
 </template>
 <script>
@@ -25,9 +28,7 @@ export default {
             'service12'
           ]
         }
-      ],
-      nodes: [],
-      links: []
+      ]
     }
   }
 }

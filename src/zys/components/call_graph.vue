@@ -5,10 +5,25 @@
 <script>
 import echarts from 'echarts'
 export default {
+  data () {
+    return {
+      nodes: [],
+      links: []
+    }
+  },
   props: {
     originData: {
       type: Array,
       required: true
+    },
+    graphTitle: {
+      type: String,
+      required: true
+    },
+    layout: {
+      type: String,
+      required: false,
+      default: 'none'
     }
   },
   mounted () {
@@ -111,16 +126,16 @@ export default {
       let myChart = echarts.init(document.getElementById('call-graph'))
       let option = {
         title: {
-          text: '调用关系构建'
+          text: this.graphTitle
         },
         series: [
           {
             type: 'graph',
             legendHoverLink: true,
-            layout: 'none',
+            layout: this.layout,
             focusNodeAdjacency: true,
             symbolSize: 50,
-            roam: false,
+            roam: true,
             label: {
               normal: {
                 show: true
@@ -155,6 +170,13 @@ export default {
         ]
       }
       myChart.setOption(option)
+    }
+  },
+  watch: {
+    originData () {
+      this.getNodes()
+      this.getLinks()
+      this.flot()
     }
   }
 }
