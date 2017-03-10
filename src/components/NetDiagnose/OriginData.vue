@@ -137,7 +137,7 @@
         $.ajax({
           type: 'post',
           data: params,
-          url: '/dns/api/get_dns_detect_data/',
+          url: '/api/dns/get_dns_detect_data/',
           dataType: 'json',
           success: (data) => {
             this.total = data.total

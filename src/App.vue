@@ -32,7 +32,7 @@
               </v-submenu>
               <v-submenu index="2">
                   <template slot="title"><i class="icon icon-bars"></i> 调用关系图</template>
-                  <v-menu-item index="/graph/test_service">服务1</v-menu-item>
+                  <v-menu-item index="/graph/test">服务1</v-menu-item>
               </v-submenu>
             </div>
         </div>
@@ -74,11 +74,10 @@
       },
       getProfile () {
         $.ajax({
-          url: '/dns/api/get_login_info/',
+          url: '/api/dns/get_login_info/',
           type: 'GET',
           dataType: 'json',
           success: (data) => {
-            // console.log(data)
             if (data.username !== null & data.username !== '') {
               this.$store.dispatch('setUserName', data.username)
               this.user_name = this.$store.getters.getUserName
@@ -94,7 +93,7 @@
         })
       },
       logOut () {
-        window.location.href = '/dns/api/logout/'
+        window.location.href = '/api/dns/logout/'
       }
     }
   }

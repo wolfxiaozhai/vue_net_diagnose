@@ -1,12 +1,12 @@
 <template>
   <div>
     <div style="display:block;padding-top:20px;">
-      <el-form 
-        ref="form" 
-        :model="form" 
+      <el-form
+        ref="form"
+        :model="form"
         label-width="80px" style="margin-top: 15px; margin-bottom: 15px;">
-        <el-row 
-          :gutter="20" 
+        <el-row
+          :gutter="20"
           style="margin-bottom:5px;margin-top:5px;">
           <el-col :span="6">
             <el-select v-model="form.status" clearable placeholder="请选择处理状态">
@@ -122,11 +122,12 @@
     },
     methods: {
       fetchDetectData () {
+        // console.log(this.$store.getters.getUserName)
         let recordId = this.$route.params.row_index
         $.ajax({
           type: 'post',
           data: {'record_id': recordId},
-          url: '/dns/api/get_dns_detect_data_by_id/',
+          url: '/api/dns/get_dns_detect_data_by_id/',
           dataType: 'json',
           success: (data) => {
             this.form = data.detect_result_data
@@ -148,7 +149,7 @@
         $.ajax({
           type: 'post',
           data: params,
-          url: '/dns/api/save_dns_result/',
+          url: '/api/dns/save_dns_result/',
           dataType: 'json',
           success: (data) => {
             if (data.ok) {

@@ -7,42 +7,69 @@ import echarts from 'echarts'
 export default {
   data () {
     return {
+      originData: [],
       nodes: [],
       links: []
     }
   },
   props: {
-    originData: {
-      type: Array,
-      required: true
-    },
-    graphTitle: {
+    rootName: {
       type: String,
       required: true
-    },
-    layout: {
-      type: String,
-      required: false,
-      default: 'none'
     }
   },
-  mounted () {
-    this.getNodes()
-    this.getLinks()
-    this.flot()
+  created () {
+    this.getData()
   },
   methods: {
+    getData () {
+      this.originData = [
+        {
+          'root': 'service1',
+          'value': [20, 31],
+          'clients': [
+            {
+              'name': 'service1c1',
+              'value': [20, 10]
+            },
+            {
+              'name': 'service1c2',
+              'value': [10, 12]
+            }
+          ]
+        },
+        {
+          'root': 'service2',
+          'value': [22, 34],
+          'clients': [
+            {
+              'name': 'service2c1',
+              'value': [15, 17]
+            },
+            {
+              'name': 'service2c2',
+              'value': [16, 30]
+            }
+          ],
+          'servers': [
+            {
+              'name': 'service2s1',
+              'value': [13, 28]
+            }
+          ]
+        }
+      ]
+    },
     getNodes () {
       let nodes = []
-      let tmpNodes = []
       for (let rootIndex in this.originData) {
         let originDataI = this.originData[rootIndex]
-        tmpNodes.push(originDataI.root)
         nodes.push(
           {
             'name': originDataI.root,
-            'x': 100,
-            'y': (parseInt(rootIndex) + 1) * 100,
+            'value': originDataI.value,
+            'x': 50,
+            'y': (parseInt(rootIndex)) * 100,
             'label': {
               'normal': {
                 'show': true,
@@ -56,18 +83,13 @@ export default {
         )
         let clients = originDataI.clients
         let servers = originDataI.servers
-        let coordIndex = parseInt(rootIndex) + 1
         for (let clientIndex in clients) {
-          if (tmpNodes.indexOf(clients[clientIndex]) >= 0) {
-            continue
-          } else {
-            tmpNodes.push(clients[clientIndex])
-          }
           nodes.push(
             {
-              'name': clients[clientIndex],
+              'name': clients[clientIndex]['name'],
+              'value': clients[clientIndex]['value'],
               'x': (parseInt(rootIndex) + 1) * 200,
-              'y': (parseInt(coordIndex) + parseInt(clientIndex)) * 100,
+              'y': (parseInt(clientIndex) + parseInt(rootIndex)) * 150,
               'label': {
                 'normal': {
                   'show': true,
@@ -79,19 +101,14 @@ export default {
               }
             }
           )
-          coordIndex += 1
         }
         for (let serverIndex in servers) {
-          if (tmpNodes.indexOf(servers[serverIndex]) >= 0) {
-            continue
-          } else {
-            tmpNodes.push(servers[serverIndex])
-          }
           nodes.push(
             {
-              'name': servers[serverIndex],
+              'name': servers[serverIndex]['name'],
+              'value': servers[serverIndex]['value'],
               'x': (parseInt(rootIndex) + 1) * 200,
-              'y': (parseInt(coordIndex) + parseInt(serverIndex)) * 100,
+              'y': (parseInt(serverIndex) + parseInt(rootIndex)) * 200,
               'label': {
                 'normal': {
                   'show': true,
@@ -103,7 +120,6 @@ export default {
               }
             }
           )
-          coordIndex += 1
         }
       }
       this.nodes = nodes
@@ -114,10 +130,10 @@ export default {
         let clients = this.originData[rootIndex].clients
         let servers = this.originData[rootIndex].servers
         for (let clientIndex in clients) {
-          links.push({'source': clients[clientIndex], 'target': this.originData[rootIndex].root})
+          links.push({'source': clients[clientIndex]['name'], 'target': this.originData[rootIndex].root})
         }
         for (let serverIndex in servers) {
-          links.push({'source': this.originData[rootIndex].root, 'target': servers[serverIndex]})
+          links.push({'source': this.originData[rootIndex].root, 'target': servers[serverIndex]['name']})
         }
       }
       this.links = links
@@ -126,13 +142,31 @@ export default {
       let myChart = echarts.init(document.getElementById('call-graph'))
       let option = {
         title: {
-          text: this.graphTitle
+          text: this.rootName
+        },
+        tooltip: {
+          show: true,
+          formatter: function (params) {
+            let res = params['name']
+            if (typeof (params['value']) !== 'undefined') {
+              res += '<br>' + '指标1: ' + params['value'][0] + '<br>'
+              res += '指标2: ' + params['value'][1]
+            }
+            return res
+          }
+        },
+        toolbox: {
+          show: true,
+          feature: {
+            restore: {},
+            saveAsImage: {}
+          },
+          right: 20
         },
         series: [
           {
             type: 'graph',
             legendHoverLink: true,
-            layout: this.layout,
             focusNodeAdjacency: true,
             symbolSize: 50,
             roam: true,
@@ -170,6 +204,21 @@ export default {
         ]
       }
       myChart.setOption(option)
+
+      let intervalTimer = null
+      myChart.on('click', function (params) {
+        clearTimeout(intervalTimer)
+        intervalTimer = setTimeout(function () {
+          let dottedNodename = params.name
+          console.log(dottedNodename)
+        }, 150)
+      })
+
+      myChart.on('dblclick', function (params) {
+        clearTimeout(intervalTimer)
+        let url = 'http://www.baidu.com'
+        window.open(url, '_blank')
+      })
     }
   },
   watch: {
