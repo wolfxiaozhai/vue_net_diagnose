@@ -26,15 +26,17 @@ let netRoutes = [
   }
 ]
 
-let graphRoutes = [
-  {
-    path: '/graph/test/',
-    name: 'test_service',
+let graphs = ['test', 'test2']
+let graphRoutes = []
+for (let graphIndex in graphs) {
+  graphRoutes.push({
+    path: '/graph/' + graphs[graphIndex],
+    name: graphs[graphIndex] + 'CallGraph',
     component: {
-      template: '<div><call-graph rootName="' + 'test' + '"></call-graph></div>'
+      template: '<div><call-graph rootName="' + graphs[graphIndex] + '"></call-graph></div>'
     }
-  }
-]
+  })
+}
 
 let otherRoutes = [
   {
