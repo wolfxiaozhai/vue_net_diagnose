@@ -1,4 +1,4 @@
-##A Vue2.x projcet based on element-ui, start with vue-cli, use `vue init webpack net_diagnose`
+## A Vue2.x projcet based on element-ui, start with vue-cli, use `vue init webpack net_diagnose`
 
 ## Start
 
