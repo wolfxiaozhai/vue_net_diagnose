@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Xigua from '@hfe/xigua'
+// import Xigua from '@hfe/xigua'
 // import '@hfe/xigua/dist/xigua.min.css'
-Xigua.install(Vue)
+// Xigua.install(Vue)
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'

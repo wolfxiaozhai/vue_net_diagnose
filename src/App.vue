@@ -27,14 +27,15 @@
           <div>
             <v-menu :collapsed="collapsed" :unique-opened="true" :router="true">
               <v-submenu index="1">
-                  <template slot="title"><i class="icon icon-bars"></i> 网络诊断</template>
-                  <v-menu-item index="/net">诊断记录</v-menu-item>
+                <template slot="title"><i class="icon icon-bars"></i> 网络诊断</template>
+                <v-menu-item index="/net">诊断记录</v-menu-item>
               </v-submenu>
               <v-submenu index="2">
-                  <template slot="title"><i class="icon icon-bars"></i> 调用关系图</template>
-                  <v-menu-item index="/graph/test">服务1</v-menu-item>
+                <template slot="title"><i class="icon icon-bars"></i> 调用关系图</template>
+                <v-menu-item index="/graph/test">服务1</v-menu-item>
               </v-submenu>
-            </div>
+            </v-menu>
+          </div>
         </div>
         <div class="layout-main" :style="{display: main_content_display}">
           <router-view></router-view>
